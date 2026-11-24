@@ -1,0 +1,52 @@
+Verified on 24 November 2026 with Lean 4.19.0 and the mathlib commit pinned in lake-manifest.json.
+lake build completed with no warnings.
+lake env lean Audit.lean completed successfully.
+Audited 226 public Mertens theorems. This kernel count includes generated equational theorems.
+The standalone Live/Mertens_Johnston_Live.lean was also elaborated with only mathlib on the import path.
+SHA-256 for the standalone Lean file: 5e0a92cdc8702eb034c0178c9cf8e130fdda4007d251a680f7e219720cbe8f96
+
+Audited 226 public Mertens theorems. Logical axioms: [propext, Quot.sound, Classical.choice].
+structure Mertens.SourceInputs : Prop
+number of parameters: 0
+fields:
+  Mertens.SourceInputs.critical : ∀ (z : Mertens.Input.ZeroCopy),
+      |(Mertens.Input.rho z).im| ≤ 10 ^ 10 → (Mertens.Input.rho z).re = 1 / 2
+  Mertens.SourceInputs.hadamard : Mertens.Input.HadamardLogDerivative
+  Mertens.SourceInputs.buthe : ∀ (f : Mertens.Input.lowBand.Finite),
+      Mertens.Input.publishedSum f.toFinset ≤ -(100015419 / 100000000)
+  Mertens.SourceInputs.middleTail : Summable Mertens.Input.rawMidReal ∧
+      ∑' (z : Mertens.Input.ZeroCopy), Mertens.Input.rawMidReal z ≤ Mertens.middleMajorant
+  Mertens.SourceInputs.highTail : Summable Mertens.Input.rawHigh ∧
+      ∑' (z : Mertens.Input.ZeroCopy), Mertens.Input.rawHigh z ≤
+        Mertens.highMajorant / Real.exp (Mertens.Input.omega / 2)
+  Mertens.SourceInputs.dusart : ∀ (t : ℝ),
+      7713133853 ≤ t → |Mertens.Input.chebyshevTheta t - t| ≤ 1 / 100 * t / Real.log t ^ 2
+  Mertens.SourceInputs.landau : Mertens.Input.ClassicalSmoothLandau
+constructor:
+  Mertens.SourceInputs.mk
+    (critical : ∀ (z : Mertens.Input.ZeroCopy), |(Mertens.Input.rho z).im| ≤ 10 ^ 10 → (Mertens.Input.rho z).re = 1 / 2)
+    (hadamard : Mertens.Input.HadamardLogDerivative)
+    (buthe : ∀ (f : Mertens.Input.lowBand.Finite), Mertens.Input.publishedSum f.toFinset ≤ -(100015419 / 100000000))
+    (middleTail :
+      Summable Mertens.Input.rawMidReal ∧
+        ∑' (z : Mertens.Input.ZeroCopy), Mertens.Input.rawMidReal z ≤ Mertens.middleMajorant)
+    (highTail :
+      Summable Mertens.Input.rawHigh ∧
+        ∑' (z : Mertens.Input.ZeroCopy), Mertens.Input.rawHigh z ≤
+          Mertens.highMajorant / Real.exp (Mertens.Input.omega / 2))
+    (dusart : ∀ (t : ℝ), 7713133853 ≤ t → |Mertens.Input.chebyshevTheta t - t| ≤ 1 / 100 * t / Real.log t ^ 2)
+    (landau : Mertens.Input.ClassicalSmoothLandau) : Mertens.SourceInputs
+Mertens.johnston_from_sources (H : Mertens.SourceInputs) :
+  ∃ x,
+    0 < x ∧
+      495702833109 / 10 ^ 9 < Real.log x ∧
+        Real.log x < 495702833165 / 10 ^ 9 ∧
+          √x * Mertens.error x < -(605 / 10 ^ 7) ∧
+            x < 191 / 100 * 10 ^ 215 ∧
+              26 / 10 * 10 ^ 103 < 60 / 10 ^ 6 * √x ∧ ∀ t ∈ Set.Icc (x - 60 / 10 ^ 6 * √x) x, Mertens.error t < 0
+'Mertens.Input.kernel_mass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Mertens.Budget.upperBound_lt' does not depend on any axioms
+'Mertens.johnston_from_sources' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Mertens.error_two_gt_half' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Mertens.error_left_limit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Mertens.error_jump_97' depends on axioms: [propext, Classical.choice, Quot.sound]
